@@ -1,0 +1,41 @@
+{{ define "hints" }}
+
+    <div class="container w-full">
+        {{range $h_index, $hint := .Hints}}
+            <div x-data="{ expanded: false }" class="border-b-2 border-mc-light-purple py-2">
+                <h2>
+                    <!-- text-mc-purple border border-b border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-100 gap-3 -->
+                    <button 
+                        id="accordion-collapse-heading-{{$h_index}}"
+                        type="button"
+                        class="flex items-center justify-between w-full font-bold text-xl py-2"
+                        data-accordion-target="#accordion-collapse-body-{{$h_index}}"
+                        @click="expanded = !expanded"
+                        :aria-expanded="expanded"
+                        aria-controls="accordion-collapse-body-{{$h_index}}"
+                    >
+                        <span class="text-mc-purple">{{$hint.Name}}</span>
+                        <svg class="fill-[#B3D138] shrink-0 ml-8" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="12" width="28" height="4" rx="2" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                            <rect y="12" width="28" height="4" rx="2" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                        </svg>
+                    </button>
+                </h2>
+                <div
+                    id="accordion-collapse-body-{{$h_index}}"
+                    role="region"
+                    class="grid overflow-hidden transition-all duration-300 ease-in-out"
+                    :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
+                    aria-labelledby="accordion-collapse-heading-{{$h_index}}"
+                >
+                    <div class="overflow-hidden">
+                        {{range $tt_index, $text := split $hint.Text}}
+                            <p class="pb-3 text-mc-purple">{{$text}}</p>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        {{end}}
+    </div>
+
+{{ end }}

@@ -1,0 +1,55 @@
+<main class="bg-white">
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                {{.Title}}
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p"><i>&quot;Bishop?… I hope I don’t have to play chess?&quot;</i></p>
+            <p class="mc-p">Having examined the chessboard standing on the table, you saw a white bishop, which, without
+            hesitation, you pick up.</p>
+            <p class="mc-p">At the same moment, in the best traditions of the detective genre, the fireplace suddenly turns and
+            a passage to a secret room opens in front of you. You squeeze through a narrow passage and you see the
+            senior detective waiting for you with coffee and ... the cat!</p>
+            <p class="mc-p"><i>&quot;Congratulations, you successfully passed the interview!&quot;</i>  he says cheerfully.
+            <i>&quot;You didn’t think that we would leave you without a practical test?! We don't need theorists
+            here!&quot;</i> Surprised, you can't say a word in response.</p>
+            <p class="mc-p">The detective meanwhile, continues: <i>&quot;Well done! You quickly found our little furry friend.
+            By the way, this is his favorite room. Our employee, who adopted him and gave him a name, works here. By the
+            way, can you guess what his name is? Everything is quite natural here, you just have to take a closer look and
+            compare the facts. Let this be your last assignment.&quot;</i></p>
+        </div>
+
+        <div 
+            x-data="{
+                images: [
+                    {
+                        path: '/static/images/mirror.webp',
+                        alt: 'reflection',
+                        title: 'Mirror'
+                    }
+                ],
+            }"
+        >
+            <template x-for="(image, idx) in images">
+
+                {{ template "modal_image" }}
+
+            </template>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Enter the cat's name.</p>
+        </div>
+
+        {{ template "answer_form" }}
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        {{ template "hints" . }}
+    </div>
+</main>

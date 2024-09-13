@@ -1,0 +1,68 @@
+<main class="bg-white">
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                {{.Title}}
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">The transformer block clicks and the light flashes brightly in the room. Feeling proud of
+                yourself, you look around the room and are horrified to find that the cat beloved by the detectives has
+                disappeared. This was your first mission!</p>
+            <p class="mc-p">You rush to the door to inspect the rest of the room, but the door is locked.</p>
+        </div>
+
+        <div 
+            x-data="{
+                images: [
+                    {
+                        path: '/static/images/door2.webp',
+                        alt: 'door',
+                        title: 'Door'
+                    }
+                ],
+            }"
+        >
+            <template x-for="(image, idx) in images">
+
+                {{ template "modal_image" }}
+
+            </template>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">You take another look around the room. To your surprise, there is a note on the table that you're
+                sure wasn’t there before.</p>
+            <p class="mc-p"><i>&quot;Is this a note from a cat? What kind of joke...?&quot;</i>, you are indignant and focused on
+            finding the password.</p>
+        </div>
+
+        <div 
+            x-data="{
+                images: [
+                    {
+                        path: '/static/images/note.webp',
+                        alt: 'door',
+                        title: 'Door'
+                    }
+                ],
+            }"
+        >
+            <template x-for="(image, idx) in images">
+
+                {{ template "modal_image" }}
+
+            </template>
+        </div>
+
+        {{ template "answer_form" . }}
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        {{ template "hints" . }}
+
+    </div>
+</main>

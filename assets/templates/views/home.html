@@ -1,0 +1,29 @@
+
+<main class="bg-white">
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                Intro
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-4 xl:px-0 md:px-8">
+            <p class="mc-p">We invite you to take part in an online detective game &#128373;</p>
+            <p class="mc-p">You will find 7 easy and exciting tasks that you can complete alone, but for more fun, we recommend playing with two or three people.</p>
+            <p class="text-xl mb-3 mc-p">Here are some props that will help you to complete the game:
+                <ul class="mb-4 ml-4 text-left relative text-xl">
+                    <li class="mc-bullet mb-2">a pen,</li>
+                    <li class="mc-bullet mb-2">a sheet of paper for notes,</li>
+                    <li class="mc-bullet mb-2">a small square piece of paper (even plain note paper or a napkin will do),</li>
+                    <li class="mc-bullet mb-2">a mirror (pocket or wall, doesn't matter) or any other reflective surface.</li>
+                </ul>
+            </p>
+            <p class="mc-p">There are hints on each level in case you're stuck.</p>
+            <p class="mc-p">If everything is clear - enter the word “KEY” in the input field and start the game, Mystic case!</p>
+        </div>
+
+        {{ template "answer_form" . }}
+    </div>
+</main>

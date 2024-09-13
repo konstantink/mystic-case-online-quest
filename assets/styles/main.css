@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Pangram";
+    src: url('/static/fonts/Pangram-Regular.woff') format("woff");
+    font-weight: normal;
+}
+  
+@font-face {
+    font-family: 'Pangram';
+    src: url('/static/fonts/Pangram-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Pangram';
+    src: url('/static/fonts/Pangram-Black.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Pangram';
+    src: url('/static/fonts/Pangram-ExtraBold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@layer base {
+    html {
+        font-family: "Pangram", system-ui, sans-serif;
+    }
+}
+
+.mc-bullet{
+    @apply pl-16;
+    @apply before:bg-[url('/static/images/bullet.svg')] before:bg-no-repeat before:absolute before:w-6 before:h-6 before:left-4;
+}
+
+.mc-p {
+    @apply text-xl indent-8 last:mb-0 mb-4;
+}

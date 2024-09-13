@@ -1,0 +1,94 @@
+<main class="bg-white">
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                {{.Title}}
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">You have been dreaming of becoming a detective, and finally, the day has come. You have an
+            interview at a detective agency that deals with mystical cases.</p>
+            <p class="mc-p">The senior detective invites you into the office and offers an armchair for you to sit, shooing away
+            the cat that was sleeping comfortably in it.</p>
+            <p class="mc-p"><i>&quot;Welcome to our agency!&quot;</i> he says. <i>&quot;We are actively looking for talented
+            people with unique detective skills to join our team. This is the first step to see if you can become
+            one of them. There are several rounds of interviews waiting for you. First, let's check your deduction.
+            Please take a seat at the computer and study the case file, while I bring us coffee.&quot;</i></p>
+            <p class="mc-p"><i>&quot;Would you like something, buddy?&quot;</i> he turned to the cat and laughed. <i>&quot;This is
+            our office favorite. I think you will become friends with him too. Keep an eye on him while I'm gone. You
+            can consider this as your first assignment.&quot;</i></p>
+            <p class="mc-p">With these words, the detective left the office. You stroked the cat, which is already comfortable on
+            your lap, and set about completing your task.</p>
+        </div>
+        <div 
+            x-data="{
+                images: [
+                    {
+                        path: '/static/images/test1.webp',
+                        alt: 'evidence_1',
+                        title: 'Evidence #1'
+                    }, {
+                        path: '/static/images/test2.webp',
+                        alt: 'evidence_2',
+                        title: 'Evidence #2'
+                    }
+                ],
+            }"
+        >
+            <template x-for="(image, idx) in images">
+
+                {{ template "modal_image" }}
+
+            </template>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Identify four suspects and enter the answer.</p>
+        </div>
+
+        {{ template "answer_form" . }}
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container w-full">
+            {{range $h_index, $hint := .Hints}}
+                <div x-data="{ expanded: false }" class="border-b-2 border-mc-light-purple py-2">
+                    <h2>
+                        <!-- text-mc-purple border border-b border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-100 gap-3 -->
+                        <button 
+                            id="accordion-collapse-heading-{{$h_index}}"
+                            type="button"
+                            class="flex items-center justify-between w-full font-bold text-xl py-2"
+                            data-accordion-target="#accordion-collapse-body-{{$h_index}}"
+                            @click="expanded = !expanded"
+                            :aria-expanded="expanded"
+                            aria-controls="accordion-collapse-body-{{$h_index}}"
+                        >
+                            <span class="text-mc-purple">{{$hint.Name}}</span>
+                            <svg class="fill-[#B3D138] shrink-0 ml-8" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="12" width="28" height="4" rx="2" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                <rect y="12" width="28" height="4" rx="2" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                            </svg>
+                        </button>
+                    </h2>
+                    <div
+                        id="accordion-collapse-body-{{$h_index}}"
+                        role="region"
+                        class="grid overflow-hidden transition-all duration-300 ease-in-out"
+                        :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
+                        aria-labelledby="accordion-collapse-heading-{{$h_index}}"
+                    >
+                        <div class="overflow-hidden">
+                            {{range $tt_index, $text := split $hint.Text}}
+                                <p class="pb-3 text-mc-purple">{{$text}}</p>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+            {{end}}
+        </div>
+    </div>
+</main>

@@ -1,0 +1,168 @@
+<main class="bg-white">
+
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                {{.Title}}
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Congratulations new detective! You have successfully completed the quest, and from   today you can consider
+                yourself a full-time member of our Mystic Case detective agency!</p>
+            <p class="mc-p">Are you ready to continue your detective journey? Check out Mystic Case boxes - a fun way to challenge your brain and spend quality time with your friends or family.</p>
+            <p class="mc-p">MYSTIC CASE is a real ESCAPE ROOM IN A BOX delivered to your door. The box contains exciting plot with logical and interactive tasks, various objects and tools, clues, cyphers, puzzles, codes, and detailed hints for every stage if you're stuck.</p>
+            <p class="mc-p">Mystic Case box is perfect for family or friends evenings and parties.</p>
+            <p class="mc-p">It is simple to play:
+                <ul class="mb-4 ml-4 text-left relative text-xl">
+                    <li class="mc-bullet mb-2">Your goal is to resolve the detective case using the clues and all the objects you have</li>
+                    <li class="mc-bullet mb-2">During the game you will need to discover hidden clues, resolve the puzzles, interact with objects and gather new information</li>
+                    <li class="mc-bullet mb-2">Following the plot step by step you will find the final answer and resolve the case</li>
+                </ul>
+            </p>
+            <p class="mc-p">Mystic Case is the perfect way to spend quality time together!
+                <ul class="mb-4 ml-4 text-left relative text-xl">
+                    <li class="mc-bullet mb-2">SELF-SUFFICIENT, everything you need is already included into the box</li>
+                    <li class="mc-bullet mb-2">EXCITING and INTERACTIVE, getting involved into the investigation you become a real team</li>
+                    <li class="mc-bullet mb-2">FAMILY FRIENDLY, there is something to do for everyone</li>
+                    <li class="mc-bullet mb-2">TIME INDEPENDENT, you decide when to play, when to pause and when to continue</li>
+                </ul>
+            </p>
+            <p class="mc-p">Some reviews from our detectives who have already successfully conducted investigations.</p>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <div x-data="{
+                slides: [{
+                    imgSrc: '/static/images/feedback/feedback_1.webp',
+                    imgAlt: 'feedback_1'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_2.webp',
+                    imgAlt: 'feedback_2'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_3.webp',
+                    imgAlt: 'feedback_3'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_4.webp',
+                    imgAlt: 'feedback_4'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_5.webp',
+                    imgAlt: 'feedback_5'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_6.webp',
+                    imgAlt: 'feedback_6'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_7.webp',
+                    imgAlt: 'feedback_7'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_8.webp',
+                    imgAlt: 'feedback_8'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_9.webp',
+                    imgAlt: 'feedback_9'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_10.webp',
+                    imgAlt: 'feedback_10'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_11.webp',
+                    imgAlt: 'feedback_11'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_12.webp',
+                    imgAlt: 'feedback_12'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_13.webp',
+                    imgAlt: 'feedback_13'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_14.webp',
+                    imgAlt: 'feedback_14'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_15.webp',
+                    imgAlt: 'feedback_15'
+                },
+                {
+                    imgSrc: '/static/images/feedback/feedback_16.webp',
+                    imgAlt: 'feedback_16'
+                }],
+                currentSlideIndex: 1,
+                previous() {
+                    if (this.currentSlideIndex > 1) {
+                        this.currentSlideIndex = this.currentSlideIndex - 1
+                    } else {   
+                        // If it's the first slide, go to the last slide
+                        this.currentSlideIndex = this.slides.length
+                    }
+                },
+                next() {
+                    if (this.currentSlideIndex < this.slides.length) {
+                        this.currentSlideIndex = this.currentSlideIndex + 1
+                    } else {
+                        // If it's the last slide, go to the first slide
+                        this.currentSlideIndex = 1
+                    }
+                },
+            }" class="relative w-full">
+
+                <!-- previous button -->
+                <button type="button" class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white" aria-label="previous slide" x-on:click="previous()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="3" class="size-5 md:size-6 pr-0.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+
+                <!-- next button -->
+                <button type="button" class="absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white" aria-label="next slide" x-on:click="next()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="3" class="size-5 md:size-6 pl-0.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+
+                <!-- slides -->
+                <!-- Change min-h-[50svh] to your preferred height size -->
+                <div class="relative min-h-[50svh] w-full">
+                    <template x-for="(slide, index) in slides">
+                        <div x-show="currentSlideIndex == index + 1" class="absolute inset-0" x-transition.opacity.duration.1000ms>
+                            <img class="absolute w-full h-full inset-0 object-contain text-neutral-600 dark:text-neutral-300" x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" />
+                        </div>
+                    </template>
+                </div>
+
+                <!-- indicators -->
+                <div class="absolute rounded-md bottom-[-1.75rem] md:bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:gap-3 bg-white/75 px-1.5 py-1 md:px-2 dark:bg-neutral-950/75" role="group" aria-label="slides" >
+                    <template x-for="(slide, index) in slides">
+                        <button class="size-2 cursor-pointer rounded-full transition bg-neutral-600 dark:bg-neutral-300" x-on:click="currentSlideIndex = index + 1" x-bind:class="[currentSlideIndex === index + 1 ? 'bg-neutral-600 dark:bg-neutral-300' : 'bg-neutral-600/50 dark:bg-neutral-300/50']" x-bind:aria-label="'slide ' + (index + 1)"></button>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Try something different, fun and challenging &#128526;</p>
+            <p class="mc-p">Visit our shop to choose a box straight away.</p>
+        </div>
+        <div class="container flex flex-col items-center text-mc-purple mb-10 xl:px-0 md:px-8">
+            <button class="uppercase md:w-56 w-full tracking-wider font-bold sm:text-xl text-2xl bg-mc-light-green px-8 py-4 rounded-full" onclick="window.location = 'https://www.mystic-case.co.uk/shop'">Go to shop</button>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">We hope to see you soon &#128522;</p>
+            <p class="mc-p">Mystic Case</p>
+        </div>
+    </div>
+
+</main>

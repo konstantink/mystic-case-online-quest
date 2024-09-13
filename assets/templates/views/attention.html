@@ -1,0 +1,47 @@
+<main class="bg-white">
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                {{.Title}}
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">After tidying up the filing cabinet, you look around the room further.</p>
+            <p class="mc-p">On the opposite wall, you notice some abstract modern paintings. You are not a connoisseur of such art -
+            in your opinion, but even you could paint a similar picture. You wonder if the author of the paintings at
+            least put some thought into them?</p>
+        </div>
+
+        <div 
+            x-data="{
+                images: [
+                    {
+                        path: '/static/images/scheme.webp',
+                        alt: 'scheme',
+                        title: 'Scheme'
+                    }
+                ],
+            }"
+        >
+            <template x-for="(image, idx) in images">
+
+                {{ template "modal_image" }}
+
+            </template>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Enter the answer word.</p>
+        </div>
+
+        {{ template "answer_form" }}
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        {{ template "hints" . }}
+
+    </div>
+</main>

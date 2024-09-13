@@ -1,0 +1,84 @@
+<main class="bg-white">
+    <div class="container lg:px-0 px-8 flex flex-col justify-center items-center md:py-20 py-10">
+        <div class="container flex justify-center items-center text-mc-purple mb-10 text-center">
+            <h2 class="text-4xl font-bold">
+                {{.Title}}
+            </h2>
+        </div>
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Before you have time to rejoice at the fact that you completed the task so quickly,  you heard some
+            kind of crackling in the room: the lamp on the ceiling flickers ominously several times and goes out,
+            plunging the room into darkness...</p>
+            <p class="mc-p">A moment later, a transformer device lights up in the corner. Calming a little from the sudden stress,
+            you approach it. The green image seems to be running through some strange inscriptions. What could it mean?</p>
+        </div>
+
+        <div 
+            x-data="{
+                images: [
+                    {
+                        path: '/static/images/gif.webp',
+                        alt: 'image_on_a_screen',
+                        title: 'Device'
+                    }
+                ],
+            }"
+        >
+            <template x-for="(image, idx) in images">
+
+                {{ template "modal_image" }}
+
+            </template>
+        </div>
+
+        <div class="container flex flex-col text-mc-purple mb-10 xl:px-0 md:px-8">
+            <p class="mc-p">Enter the password to restore power.</p>
+        </div>
+
+        {{ template "answer_form" . }}
+
+        <div class="border-t border-mc-light-purple mb-10 w-full"></div>
+
+        <div class="container w-full">
+            {{range $h_index, $hint := .Hints}}
+                <div x-data="{ expanded: false }" class="border-b-2 border-mc-light-purple py-2">
+                    <h2>
+                        <!-- text-mc-purple border border-b border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-100 gap-3 -->
+                        <button 
+                            id="accordion-collapse-heading-{{$h_index}}"
+                            type="button"
+                            class="flex items-center justify-between w-full font-bold text-xl py-2"
+                            data-accordion-target="#accordion-collapse-body-{{$h_index}}"
+                            @click="expanded = !expanded"
+                            :aria-expanded="expanded"
+                            aria-controls="accordion-collapse-body-{{$h_index}}"
+                        >
+                            <span class="text-mc-purple">{{$hint.Name}}</span>
+                            <svg class="fill-[#B3D138] shrink-0 ml-8" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="12" width="28" height="4" rx="2" class="transform origin-center transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                                <rect y="12" width="28" height="4" rx="2" class="transform origin-center rotate-90 transition duration-200 ease-out" :class="{'!rotate-180': expanded}" />
+                            </svg>
+                        </button>
+                    </h2>
+                    <div
+                        id="accordion-collapse-body-{{$h_index}}"
+                        role="region"
+                        class="grid overflow-hidden transition-all duration-300 ease-in-out"
+                        :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
+                        aria-labelledby="accordion-collapse-heading-{{$h_index}}"
+                    >
+                        <div class="overflow-hidden">
+                            {{range $tt_index, $text := split $hint.Text}}
+                                <p class="pb-3 text-mc-purple">{{$text}}</p>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+            {{end}}
+        </div>
+
+    </div>
+</main>
