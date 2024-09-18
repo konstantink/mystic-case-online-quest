@@ -20,7 +20,7 @@ type OnlineQuest struct {
 }
 
 func NewOnlineQuest() *OnlineQuest {
-	engine := html.New("./assets/templates/views", ".html")
+	engine := html.New("./templates/views", ".html")
 	engine.AddFuncMap(template.FuncMap{
 		"safeHTML": func(val any) template.HTML {
 			return template.HTML(fmt.Sprint(val))
@@ -32,8 +32,6 @@ func NewOnlineQuest() *OnlineQuest {
 			return len(val)
 		},
 	})
-	engine.Reload(true)
-	engine.Debug(true)
 
 	app := fiber.New(fiber.Config{
 		Views: engine,
