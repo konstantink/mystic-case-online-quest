@@ -13,10 +13,13 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
+	"gopkg.in/telebot.v3"
 )
 
 type OnlineQuest struct {
-	app *fiber.App
+	app     *fiber.App
+	bot     *telebot.Bot
+	botChan chan BotMessage
 }
 
 func NewOnlineQuest() *OnlineQuest {
@@ -50,7 +53,9 @@ func main() {
 
 	quest.initSystemHandlers()
 	quest.initRoutes()
+	quest.initBot()
 
+	go quest.ListenForMessages()
 	go quest.StartServer()
 
 	c := make(chan os.Signal, 1)
