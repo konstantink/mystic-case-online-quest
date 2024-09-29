@@ -45,7 +45,7 @@ func NewOnlineQuest() *OnlineQuest {
 }
 
 func (oc *OnlineQuest) StartServer() {
-	log.Fatal(oc.app.Listen(fmt.Sprintf("%s:%s", config.Config("MYSTIC_CASE_DOMAIN"), config.Config("MYSTIC_CASE_PORT"))))
+	log.Fatal(oc.app.Listen(fmt.Sprintf("%s:%s", "0.0.0.0", config.Config("MYSTIC_CASE_PORT"))))
 }
 
 func main() {
